@@ -1,0 +1,110 @@
+<html>
+<head>
+
+
+<title>
+Canvas Build
+</title>
+</head>
+<body id = 'body' style = "text-align: left; background:#ffaa22">
+
+
+
+<div style = "background: #e0eff1;color:red; font-family:Bradley Hand ITC; font-size:30px"><h3>coursing . . .</h3>
+<h2>Da' Wrinkles</h2></div>
+<div style = "background:#e1ffe2; font-family:Bradley Hand ITC"><strong>
+<p>Now here's a problem that bothers me very very much!!!
+I'm trying to get a list of numbers that can result in one 
+another when something weird happens!!
+When you take any 2 of those numbers and you multiply them, 
+and you divide the result by any chosen number of your choice,
+you get a number as a remainder which already belongs to that number list(or 'crop')
+which you formally chose.<br/>
+
+For instance, I'll list 2 4 5 6 and 7, now I chose 8 to be a divider.
+Here we go: 2 multiplied by 6 is equal to 12. Now 12 divided by 8 is equal to 1 remaining 4(our answer!!).
+Good 4 is in the original group! Seems like we on! But wait!!! 4 times 6 is 24. And that divided by 8 is 0
+which isn't on the list. Ha! We don't have a crop!!!<br/><br/>
+
+Try for your selves and find as many crops under any divider you choose. But try to follow the rules.
+Send me your crops and how you think those numbers relate. In fact tell what anything on there!!! techiemechanic@gmail.com.<br/>
+Thankia!!!</p></strong></div><br/><br/>
+
+
+<div style = "background:#e1ffe2; font-family:Bradley Hand ITC"><p> <b>Enter A Crop Number Between 3 And 20 and A ModNumber</b> <br/></div>
+<input id = 'tease' type ='text' placeholder = 'Crop Number' size = 12>
+<input id = 'teaser' type ='text' placeholder = 'ModNumber' size = 12> 
+<input type ='button' value = 'start' onclick = 'arr()'><br/><br/>
+
+<div id ='use' style = 'font-size:20px'></div>
+<div id ='useto' style = 'font-size:20px'></div>
+
+<script>
+
+var arre = new Array();
+var y = new Array();
+var g = new Array();
+
+
+
+function arr(){
+	
+
+	var test = document.getElementById('tease').value;
+	var cropsize = +test;
+	//document.getElementById('use').innerHTML = cropsize;
+	
+	var test1 = document.getElementById('teaser').value;
+	var modnum = +test1;
+	//document.getElementById('useto').innerHTML = modnum; 
+	
+	
+	if(cropsize>2&&cropsize<=20){
+	
+		for(var n =0; n<cropsize; n++){
+			
+			var x = prompt('Enter Number . . .', '');
+                        y[n] = x;
+                        
+                        if(n>0){
+                            for(var t =n; t>0;t--){
+                            if(y[n]===y[t-1]){
+                                alert('You are repeating numbers!');
+                                }
+                            }        
+                            }
+                            arre[n] = +x;
+                            }
+//document.getElementById('use').innerHTML = 'For a crop size of: '+cropsize+ '<br/><br/> You chose these numbers: '+arre;
+}
+
+else document.getElementById('warning').innerHTML = typeof(cropsize);//'Enter a number between 3 and 10'+' '+':-('; 
+
+document.getElementById('use').innerHTML = 'For a crop size of: '+arre.length+ '<br/><br/> You chose these numbers: '+arre;
+        var m = 0;
+        var w = 0;
+        for(var a =0; a < arre.length; a++){
+            for(var b = a;b>=0;b--){
+                g[m] = (arre[a]*arre[b])%modnum;
+                ++m;
+            }
+        }
+        for(var c =0; c<g.length; c++){
+            for(var d = 0; d<arre.length; d++){
+                if(g[c] === arre[d]){
+                    ++w;
+                }
+            }
+        }
+        
+        if(w === g.length){
+            alert('A Crop!! Send me an email.');
+	  }      
+	else alert('No crop!!');
+
+}
+
+</script>
+
+</body>
+</html>
